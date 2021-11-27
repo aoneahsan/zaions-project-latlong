@@ -1,0 +1,7 @@
+*.lock
+
+vendor
+
+node_modules
+
+.git-*
