@@ -1,3 +1,12 @@
-body {
-   background-color: red;
-}
+/* 
+Site CSS
+ */
+ .mainContainer{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .mainContainer > div{
+    min-height: 300px;
+ }
