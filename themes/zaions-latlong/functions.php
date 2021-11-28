@@ -9,6 +9,8 @@ function zaions_cssJsScripts() {
 
     // JS Files Import
     wp_enqueue_script( 'zaions_main-jquery', 'https://code.jquery.com/jquery-3.1.1.min.js', null, time(), 'all' );
+    wp_enqueue_script( 'zaions_main-google-map-jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', null, time(), 'all' );
+    wp_enqueue_script( 'zaions_main-google-map-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=YOUR_API_KEY', null, time(), 'all' );
     wp_enqueue_script( 'zaions_main-js', get_stylesheet_directory_uri(  ) . './assets/js/main.js', null, time(), 'all' );
 }
  
