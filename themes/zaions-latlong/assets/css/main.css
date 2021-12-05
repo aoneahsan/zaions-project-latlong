@@ -10,3 +10,9 @@ Site CSS
  .mainContainer > div{
     min-height: 300px;
  }
+ .find_my_locaiton{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+ }

@@ -37,6 +37,33 @@ $(document).on('change', '#' + searchInput, function () {
 });
 
 
+var x = document.getElementById("demo");
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+   console.log(position);
+   $('#loc_lat').text(position.coords.latitude);
+   $('#loc_long').text(position.coords.longitude);
+
+   $.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=YOUR_API_KEY`,function (data, status) {
+      console.log(data);
+      document.getElementById('formated_address').innerHTML = data.results[0].formatted_address
+   })
+   let frame = `
+           <iframe width="100%" height="250"
+                      src="https://maps.google.com/maps?q=${position.coords.latitude},${position.coords.longitude}&hl=es&z=14&amp;output=embed">
+                   </iframe>
+      `
+   $("#result_container").html(frame)
+}
+
+
 
 
 

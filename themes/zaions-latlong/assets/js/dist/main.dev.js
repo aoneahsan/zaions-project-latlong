@@ -25,3 +25,24 @@ $(document).on('change', '#' + searchInput, function () {
   document.getElementById('latitude_view').innerHTML = '';
   document.getElementById('longitude_view').innerHTML = '';
 });
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  console.log(position);
+  $('#loc_lat').text(position.coords.latitude);
+  $('#loc_long').text(position.coords.longitude);
+  $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=".concat(position.coords.latitude, ",").concat(position.coords.longitude, "&key=AIzaSyCoM2N8BXBveNHlX96-EjCkpaQDd7mVrLI"), function (data, status) {
+    console.log(data);
+    document.getElementById('formated_address').innerHTML = data.results[0].formatted_address;
+  });
+  var frame = "\n           <iframe width=\"100%\" height=\"250\"\n                      src=\"https://maps.google.com/maps?q=".concat(position.coords.latitude, ",").concat(position.coords.longitude, "&hl=es&z=14&amp;output=embed\">\n                   </iframe>\n      ");
+  $("#result_container").html(frame);
+}
